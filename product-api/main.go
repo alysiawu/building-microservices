@@ -9,15 +9,14 @@ import (
 	"time"
 
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/hashicorp/go-hclog"
-	"google.golang.org/grpc"
-
 	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/hashicorp/go-hclog"
 	protos "github.com/nicholasjackson/building-microservices-youtube/currency/protos/currency"
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/data"
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/handlers"
 	"github.com/nicholasjackson/env"
+	"google.golang.org/grpc"
 )
 
 var bindAddress = env.String("BIND_ADDRESS", false, ":9090", "Bind address for the server")
@@ -29,7 +28,7 @@ func main() {
 	l := hclog.Default()
 	v := data.NewValidation()
 
-	conn, err := grpc.Dial("localhost:9092", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:9094", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
@@ -89,7 +88,7 @@ func main() {
 
 	// start the server
 	go func() {
-		l.Info("Starting server on port 9090")
+		l.Info("Starting server on port 9094")
 
 		err := s.ListenAndServe()
 		if err != nil {
