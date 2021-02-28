@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nicholasjackson/working/handlers"
+	"github.com/nicholasjackson/building-microservices-youtube/tree/episode_2/product-api"
 )
 
 func main() {
