@@ -28,7 +28,7 @@ func main() {
 	l := hclog.Default()
 	v := data.NewValidation()
 
-	conn, err := grpc.Dial("localhost:9094", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:9090", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
@@ -88,7 +88,7 @@ func main() {
 
 	// start the server
 	go func() {
-		l.Info("Starting server on port 9094")
+		l.Info("Starting server on port 9090")
 
 		err := s.ListenAndServe()
 		if err != nil {
